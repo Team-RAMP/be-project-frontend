@@ -14,11 +14,15 @@
             padding: 0;
             font-family: 'Inter', sans-serif; 
             font-weight: 400;
+            color: white;
         }
 
         .main-background {
             background-color: #111;        
             height: 100%;
+            z-index: 0;
+            display: flex;
+            flex-direction: column;
             width: 100%;
             position: relative;
             overflow: hidden;
@@ -40,11 +44,11 @@
             flex-shrink: 0;
             position: absolute;
             opacity: 0.5;
+            z-index: -2;
             background: radial-gradient(37.83% 37.83% at 50% 50%, #725BDA 0%, rgba(6, 19, 45, 0.00) 100%);
         }
 
         .title {
-            color: white;         
             font-family: 'Inter', sans-serif; 
             font-weight: 700;
             display: block;
@@ -52,8 +56,7 @@
             align-self: center;
             top: 50%;
             left: 50%;
-            transform: translate(-50%,0);
-
+            transform: translate(-50%,0);            
         }
 
         .page-header {
@@ -67,6 +70,8 @@
             padding-right: 24px;            
             padding-top: 8px;
             padding-bottom: 8px;
+            box-shadow: 0 2px 2px -2px #D3D3D3; 
+
         }
 
         .menu-header-link-section {
@@ -76,42 +81,205 @@
 
         .menu-header-link {
             color: white;
-            text-decoration: none;
-            
+            text-decoration: none;            
             padding: 0 24px;
             font-size: 18;
         }
 
         button {
-            padding: 8px 16px;
+            padding: 8px 22px;
             color: white;
             background-color: #B95BDA;
             border-radius: 8px;
             font-weight: 500;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            user-select: none;
+
             /* width: 100px;
             height: 45px; */
         }
 
-        .divider-line {
+        .ripple {
+            background-position: center;
+            transition: background 0.8s;
+        }
+
+        .ripple:hover {
+            background: #B95BDA radial-gradient(circle, transparent 1%, rgba(185, 91, 218, 0.5) 1%) center/15000%;
+        }
+
+
+        .ripple:active {
+            background-color: rgba(147, 75, 181, 0.8);
+            background-size: 100%;
+            transition: background 0s;
+        }
+
+        .main-background-message {
+            text-align: center;
+            font-weight: 600;
+            font-size: 42px;
+        }
+
+        .main-user-prompt-text {
+            text-align: center;
+            font-weight: 400;
+            font-size: 18px;
+            padding-left: 36px;            
+            padding-right: 36px;
+            margin-top: 28px;
+            line-height: 150%;
+        }
+
+        .main-body {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            flex-grow: 1;
+            justify-content: center;
+            animation: fadeInAnimation ease 0.7s;
+        }
+
+        .user-prompt-box {
+            width: 75vw;
+            padding: 20px 8px;
+            align-self: center;
+            display: flex;
+            background-color: #D9D9D90D;
+            box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+            border-radius: 12px;
+            margin-top: 64px;
             
         }
 
+        .user-prompt-box > * {
+            margin: 0 8px;
+        }
+
+        .user-prompt-box > input {
+            min-width: 0;
+            flex-grow: 1;
+            background-color: transparent;
+            margin: 0 12px;
+            border: none;
+            color: white;
+            z-index: 9;
+            font-size: 20px;
+        }
+
+        .user-prompt-box > button {
+            padding: 16px 48px;
+            font-size: 19.2px;
+        }
+
+        .user-prompt-box > input:focus {
+            outline: none;
+        }
+
+
+        .user-prompt-box > input::placeholder {
+            color: white;
+            opacity: 0.5;
+            font-size: 20px;
+        }
+      
+        .suggestions-box {
+            width: 75vw;
+            align-self: center;
+            display: flex;
+            white-space: nowrap;
+            margin: 72px 0;
+        }
+
+        .suggestions {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .bubble {
+            margin: 8px 6px;
+            padding: 6px 8px;
+            border: solid white 1px;
+            text-align: center;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        
+        .bubble:hover {
+            background-color: #B95BDA;
+            border: solid #B95BDA 1px;
+        }
+
+        .suggestions-box-title {
+            margin-right: 8px;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 400;
+            padding: 28px;
+        }
+
+ 
+        @keyframes fadeInAnimation {
+            0% {
+                opacity: 0;
+                margin-top: 50px;
+            }
+
+            100% {
+                opacity: 1;
+                margin-top: 0px;
+            }
+        }
+        
     </style>
 </head>
 <body>
     <div class="main-background">
         <div class="gradient-container" id="gradient-container-1"></div>
-        <div class="gradient-container" id="gradient-container-2"></div>    
+        <div class="gradient-container" id="gradient-container-2"></div>  
+
         <header class="page-header">
-            <div class="menu-header-link-section">
+            <nav class="menu-header-link-section">
                 <a class="menu-header-link" href="#examples">Examples</a>
                 <a class="menu-header-link" href="#research">Research</a>
                 <a class="menu-header-link" href="#product">Product</a>
-            </div>
+            </nav>
             <p class="title">TxtAnimate</p>
-            <button>Start Generating</button>
+            <button class="ripple">Start Generating</button>
         </header>
-        <div class="divider-line"></div>
+        
+        <div class="main-body">
+            <p class="main-background-message">Convert text to animations, videos and more!</p>
+            <p class="main-user-prompt-text">Enter a simple prompt to generate a video, or convert an existing text document into video.</p>
+            <div class="user-prompt-box">
+                <img src="sparkles.png"/>
+                <input type="text" placeholder="Use text to describe your scene..." />
+                <button id="generate-button" class="ripple">Generate</button>
+            </div>
+            <div class="suggestions-box">
+                <p class="suggestions-box-title">Try these:</p>
+                <div class="suggestions">
+                    <div class="bubble">Surprise me</div>
+                    <div class="bubble">Palm trees on a tropical beach</div>
+                    <div class="bubble">Futuristic looking landscape</div>
+                    <div class="bubble">Under the sea coral leaves</div>
+                    <!-- <div class="bubble">Surprise</div> -->                   
+                </div>
+            </div>
+        </div>
+
+        <footer>© TxtAnimate Inc</footer>
     </div>    
+    <script>
+        document.getElementById("")
+    </script>
 </body>
 </html>
