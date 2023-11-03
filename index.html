@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif; 
+            font-weight: 400;
+        }
+
+        .main-background {
+            background-color: #111;        
+            height: 100%;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #gradient-container-1 {
+            right: -75vh;
+            top: -75vh;
+        }
+
+        #gradient-container-2 {            
+            left: -75vh;
+            bottom: -75vh;
+        }
+
+        .gradient-container {
+            width: 150vh;
+            height: 150vh;
+            flex-shrink: 0;
+            position: absolute;
+            opacity: 0.5;
+            background: radial-gradient(37.83% 37.83% at 50% 50%, #725BDA 0%, rgba(6, 19, 45, 0.00) 100%);
+        }
+
+        .title {
+            color: white;         
+            font-family: 'Inter', sans-serif; 
+            font-weight: 700;
+            font-size: 27px;
+            align-self: center;
+        }
+
+        .page-header {
+            display: flex;
+            flex-direction: row;            
+            justify-content: space-between;
+            align-items: center;
+            
+            height: 70px;
+            padding-left: 24px;
+            padding-right: 24px;            
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
+
+        .menu-header-link-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-header-link {
+            color: white;
+            text-decoration: none;
+            
+            padding: 0 24px;
+            font-size: 18;
+        }
+
+        button {
+            padding: 8px 16px;
+            color: white;
+            background-color: #B95BDA;
+            border-radius: 8px;
+            font-weight: 500;
+            /* width: 100px;
+            height: 45px; */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main-background">
+        <div class="gradient-container" id="gradient-container-1"></div>
+        <div class="gradient-container" id="gradient-container-2"></div>    
+        <header class="page-header">
+            <div class="menu-header-link-section">
+                <a class="menu-header-link" href="#examples">Examples</a>
+                <a class="menu-header-link" href="#research">Research</a>
+                <a class="menu-header-link" href="#product">Product</a>
+            </div>
+            <p class="title">TxtAnimate</p>
+            <button>Start Generating</button>
+        </header>
+    </div>    
+</body>
+</html>
