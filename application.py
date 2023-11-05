@@ -66,7 +66,7 @@ def ensure_request_not_cancelled(uid):
     message = {}
     message["type"] = "cancelled"
     message["message"] = "The video generation request has been cancelled!"
-    socket.emit("video-generation-status", message)
+    socket.emit(f"video-generation-status-{uid}", message)
     return False
 
 @socket.on('video-generation-request')
@@ -76,7 +76,7 @@ def video_generation_request(uid):
         message = {}
         message["type"] = "error"
         message["message"] = "Unable to find request ID"
-        socket.emit("video-generation-status", message)
+        socket.emit(f"video-generation-status-{uid}", message)
         return
     
 
@@ -91,9 +91,8 @@ def video_generation_request(uid):
             message["type"] = "queue"
             message["message"] = "Waiting for other videos to complete..."
             message["pending"] = queue_wait
-            socket.emit("video-generation-status", message)        
+            socket.emit(f"video-generation-status-{uid}", message)
             sleep(PROGRESS_UPDATE_DELAY_IN_S)
-            if not ensure_request_not_cancelled(uid): break
             queue_wait -= 1
 
         # Temporarily simulate progress (until the model is ready for integration)
@@ -103,7 +102,7 @@ def video_generation_request(uid):
             message["type"] = "progress"
             message["message"] = "Generating video from given prompt...."
             message["progress"] = progress
-            socket.emit("video-generation-status", message)
+            socket.emit(f"video-generation-status-{uid}", message)
             sleep(PROGRESS_UPDATE_DELAY_IN_S)
             progress += 10
 
@@ -114,13 +113,13 @@ def video_generation_request(uid):
         message = {}
         message["type"] = "completed"
         message["url"] = "/testvideo.mp4" # /get-generated-video
-        socket.emit("video-generation-status", message)
+        socket.emit(f"video-generation-status-{uid}", message)
     except:
         traceback.print_exc()
         message = {}
         message["type"] = "error"
         message["message"] = "An unexpected error occurred while generating the video"
-        socket.emit("video-generation-status", message)
+        socket.emit(f"video-generation-status-{uid}", message)
 
 
 if __name__ == "__main__":
