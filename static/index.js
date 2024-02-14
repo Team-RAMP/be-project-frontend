@@ -61,6 +61,13 @@ function updateCircularProgress(progress) {
     circularProgressBar.style.background = `radial-gradient(closest-side, #111 79%, transparent 80% 100%), conic-gradient(hotpink ${progress}%, pink 0)`
 }
 
+function getPortNumber() {
+    if (window.location.port != "") return window.location.port;
+    
+    if (window.location.protocol.startsWith("https")) return "443";
+    return "80";
+}
+
 async function startVideoGeneration() {
     // Validate the prompt
     if (promptInputField.value.trim() == "") {
@@ -99,7 +106,7 @@ async function startVideoGeneration() {
         body: promptInputField.value
     })).text();
 
-    currentSocket = io.connect('localhost:5000');
+    currentSocket = io.connect(`localhost:${getPortNumber()}`);
     
     currentSocket.on("connect", function(data){
         console.log("listening connected...");
