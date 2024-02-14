@@ -99,8 +99,6 @@ async function startVideoGeneration() {
         body: promptInputField.value
     })).text();
 
-    let p
-
     currentSocket = io.connect(`${location.hostname}:${getPortNumber()}`);
     
     currentSocket.on("connect", function(data){
