@@ -47,6 +47,14 @@ for (const element of document.getElementsByClassName('bubble')) {
     }
 }
 
+
+function getPortNumber() {
+    if (window.location.port != "") return window.location.port;
+    
+    if (window.location.protocol.startsWith("https")) return "443";
+    return "80";
+}
+
 async function cancelVideoGeneration() {
     // Attempt to cancel video generation
     await (await fetch('cancel-video-generation', {
