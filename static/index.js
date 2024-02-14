@@ -106,7 +106,7 @@ async function startVideoGeneration() {
         body: promptInputField.value
     })).text();
 
-    currentSocket = io.connect(`localhost:${getPortNumber()}`);
+    currentSocket = io.connect(location.hostname);
     
     currentSocket.on("connect", function(data){
         console.log("listening connected...");
