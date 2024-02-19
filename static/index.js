@@ -107,11 +107,13 @@ async function startVideoGeneration() {
         body: promptInputField.value
     })).text();
 
+    console.log(currentRequestId);
+
     currentSocket = io.connect(`${location.hostname}:${getPortNumber()}`);
     
     currentSocket.on("connect", function(data){
         console.log("listening connected...");
-        currentSocket.emit("video-generation-request", currentRequestId);
+        // currentSocket.emit("video-generation-request", currentRequestId);
     });
 
     let queueCounter = -1;
