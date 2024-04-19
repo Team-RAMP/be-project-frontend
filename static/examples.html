@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>TxtAnimate | Examples</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,29 +14,174 @@
             text-align: center;
             font-weight: 600;
         }
-    </style>
+
+        .video-loader-box {
+            height: 50vh;
+        }
+
+        .video-loader-box-content {
+            display: flex;                       
+        }
+
+        .example-page-title {
+            font-weight: 600;
+            font-size: 28px;
+            margin-top: 36px;
+            margin-bottom: 12px;
+            z-index: 0;
+        }
+
+        .user-prompt-box {
+            position: relative;
+            margin: 2px auto;
+        }
+
+        
+    </style>    
+    <link rel="stylesheet" href="https://unpkg.com/@glidejs/glide@3.3.0/dist/css/glide.core.min.css">
+    <script src="https://unpkg.com/@glidejs/glide@3.3.0/dist/glide.min.js"></script>
 </head>
-<body>
+<body onload="onPageLoad()">
     <div class="main-background">
         <div class="gradient-container" id="gradient-container-1"></div>
         <div class="gradient-container" id="gradient-container-2"></div>  
 
         <header class="page-header">
             <nav class="menu-header-link-section">
-                <a class="menu-header-link" target="_blank" href="/examples">Examples</a>
-                <a class="menu-header-link" target="_blank" href="/research">Research</a>
-                <a class="menu-header-link" target="_blank" href="/product">Product</a>
+                <a class="menu-header-link" href="/">Home</a>
+                <a class="menu-header-link" href="/examples">Examples</a>
+                <a class="menu-header-link" href="/research">Research</a>
             </nav>
             <p class="title">TxtAnimate</p>
             <button id="cta-button" class="ripple">Start Generating</button>
         </header>
         
-        <div class="main-body">
-            <p>Coming soon</p>
+        <div class="main-body">            
+            <div id="test">
+                <p class="example-page-title">Take a look at our pre-generated videos</p>
+                <div class="glide__track" data-glide-el="track">
+                    <ul class="glide__slides">
+                        <li class="glide_slide">
+                            <div class="user-prompt-box user-prompt-box-expanded">
+                                <div class="video-loader-box">
+                                    <div class="video-loader-box-content">                        
+                                        <video class="main-video-frame" height="100%" width="100%" controls sandbox src="/blooming_gardens.mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="user-prompt-box-content">
+                                    <img src="sparkles.png"/>
+                                    <input id="prompt-input-field" type="text" value="Blooming gardens" disabled/>
+                                    <button class="download-button" videolink="/blooming_gardens.mp4" class="ripple">Download</button>
+                                </div>
+                            </div>
+                            
+                        </li>
+                        <li class="glide_slide">
+                            <div class="user-prompt-box user-prompt-box-expanded">
+                                <div class="video-loader-box">
+                                    <div class="video-loader-box-content">                        
+                                        <video class="main-video-frame" height="100%" width="100%" controls sandbox src="/palm_trees_on_tropical_beach.mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="user-prompt-box-content">
+                                    <img src="sparkles.png"/>
+                                    <input id="prompt-input-field" type="text" value="Palm trees on a tropic beach" disabled/>
+                                    <button class="download-button" videolink="/palm_trees_on_tropical_beach.mp4" class="ripple">Download</button>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="glide_slide">
+                            <div class="user-prompt-box user-prompt-box-expanded">
+                                <div class="video-loader-box">
+                                    <div class="video-loader-box-content">                        
+                                        <video class="main-video-frame" height="100%" width="100%" controls sandbox src="lake_side_view_during_summer.mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="user-prompt-box-content">
+                                    <img src="sparkles.png"/>
+                                    <input id="prompt-input-field" type="text" value="Lakeside view during summer" disabled/>
+                                    <button class="download-button" videolink="/lake_side_view_during_summer.mp4" class="ripple">Download</button>
+                                </div>
+                            </div>
+                            
+                        </li>
+                     </ul>
+                    
+
+                    
+
+                    
+                </div>
+                <!-- <button aria-label="Previous"  onclick="glide.go('<')" >«</button>
+                <button aria-label="Next" onclick="glide.go('>')">»</button>
+                <div role="tablist" class="dots"></div> -->
+            </div>
         </div>
 
         <footer>© TxtAnimate Inc</footer>
     </div>    
     <script src="index.js"></script>
+    <script>
+        // A helper function that helps trigger file download for user
+        function downloadURL(url) {
+            var link = document.createElement("a");
+            link.download = url;
+            link.href = url;
+            link.click();
+            link.remove();
+        }
+
+        const videos = document.querySelectorAll('video');
+
+        // A function that implements the expected functionality for download buttons
+        function enableDownloadButtons() {
+            let downloadButtons = document.getElementsByClassName("download-button");
+            for (let downloadButton of downloadButtons) {
+                downloadButton.onclick = function () {
+                    let videoLink = downloadButton.getAttribute("videolink")                
+                    downloadURL(videoLink);
+                }                
+            }
+        }
+
+                // A helper function that pauses all the other videos when the current video is playing
+        function pauseAllVideos() {
+            videos.forEach(video => {
+                video.pause();
+            });
+        }   
+        
+        let glide;
+
+        // The initialization code required to setup the slider 
+        function setupGlide() {
+            glide = new Glide('#test', {
+                type: 'slider',
+                focusAt: 'center',
+                dots: '#dots',
+                perView: 1,
+                peek: 120,
+            });
+            glide.mount();
+            glide.on('run', function() {
+                pauseAllVideos();
+            });
+        }   
+        
+        setupGlide();
+
+        function onPageLoad() {            
+            enableDownloadButtons();                                
+            
+        }
+
+            
+    </script>
 </body>
 </html>

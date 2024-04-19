@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>TxtAnimate | Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,21 +17,21 @@
 
         <header class="page-header">
             <nav class="menu-header-link-section">
+                <a class="menu-header-link" href="#">Home</a>
                 <a class="menu-header-link" target="_blank" href="/examples">Examples</a>
                 <a class="menu-header-link" target="_blank" href="/research">Research</a>
-                <a class="menu-header-link" target="_blank" href="/product">Product</a>
             </nav>
             <p class="title">TxtAnimate</p>
             <button id="cta-button" class="ripple">Start Generating</button>
         </header>
         
         <div class="main-body">
-            <p id="main-background-message">Convert text to animations, videos and more!</p>
-            <p id="main-user-prompt-text">Enter a simple prompt to generate a video, or convert an existing text document into video.</p>
-            <div id="user-prompt-box">
-                <div id="video-loader-box">
-                    <div id="video-loader-box-content" hidden>
-                        <div id="progress-loader-content">
+            <p class="main-background-message">Convert text to animations, videos and more!</p>
+            <p class="main-user-prompt-text">Enter a simple prompt to generate a video, or convert an existing text document into video.</p>
+            <div class="user-prompt-box">
+                <div class="video-loader-box">
+                    <div class="video-loader-box-content" hidden>
+                        <div class="progress-loader-content">
                             <!-- <div class="progress-bar html">
                                 <progress id="html" min="0" max="100" value="92"></progress>
                             </div> -->
@@ -41,7 +42,7 @@
                             </center>
                             <p id="video-loader-message">Waiting for response from server...</p>
                         </div>
-                        <video id="main-video-frame" height="100%" width="100%" sandbox controls></video>
+                        <video class="main-video-frame" height="100%" width="100%" sandbox controls></video>
                     </div>
                 </div>
                 <div class="user-prompt-box-content">

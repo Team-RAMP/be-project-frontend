@@ -29,10 +29,6 @@ def index():
 def research_page():
     return send_from_directory(static, 'research.html')
 
-@app.route('/product')
-def product_page():
-    return send_from_directory(static, 'product.html')
-
 @app.route('/examples')
 def examples_page():
     return send_from_directory(static, 'examples.html')

@@ -5,8 +5,8 @@ let generateButton = document.getElementById("generate-button");
 let videoLoaderMessage = document.getElementById("video-loader-message");
 let progressPercentage = document.getElementById("progress-percentage");
 
-let mainVideoFrame = document.getElementById("main-video-frame");
-let progressLoaderContent = document.getElementById("progress-loader-content");
+let mainVideoFrame = document.getElementsByClassName("main-video-frame")[0];
+let progressLoaderContent = document.getElementsByClassName("progress-loader-content")[0];
 
 let circularProgressBar = document.getElementById("progress-bar");
 
@@ -28,7 +28,7 @@ document.getElementById("cta-button").onclick = function () {
     promptInputField.focus();
 }
 
-generateButton.onclick = onGenerateButtonClicked;
+if (generateButton != null) generateButton.onclick = onGenerateButtonClicked;
 
 function onGenerateButtonClicked() {
 
@@ -79,11 +79,11 @@ async function startVideoGeneration() {
     isGenerating = true;
 
     // Update/animate the UI as required
-    document.getElementById("user-prompt-box").classList.add("user-prompt-box-expanded");
-    document.getElementById("main-background-message").style.animation = "fadeOutDisappear 0.5s ease forwards";
-    document.getElementById("main-user-prompt-text").style.animation = "fadeOutDisappear 0.5s ease forwards";
+    document.getElementsByClassName("user-prompt-box")[0].classList.add("user-prompt-box-expanded");
+    document.getElementsByClassName("main-background-message")[0].style.animation = "fadeOutDisappear 0.5s ease forwards";
+    document.getElementsByClassName("main-user-prompt-text")[0].style.animation = "fadeOutDisappear 0.5s ease forwards";
     document.getElementById("suggestions-box").style.animation = "fadeOutDisappear 0.5s ease forwards";
-    document.getElementById("video-loader-box").style.animation = "videoBoxExpand 0.7s ease forwards";        
+    document.getElementsByClassName("video-loader-box")[0].style.animation = "videoBoxExpand 0.7s ease forwards";        
 
     progressLoaderContent.style.display = "block";
     mainVideoFrame.style.display = "none";
@@ -92,8 +92,8 @@ async function startVideoGeneration() {
     videoLoaderMessage.innerHTML = "Waiting for response from server...";
     progressPercentage.innerHTML = "--";
 
-    document.getElementById("video-loader-box").addEventListener("animationend", () => {
-        document.getElementById("video-loader-box-content").style.display = "flex";
+    document.getElementsByClassName("video-loader-box")[0].addEventListener("animationend", () => {
+        document.getElementsByClassName("video-loader-box-content")[0].style.display = "flex";
     });
 
     generateButton.innerHTML = "Cancel";
