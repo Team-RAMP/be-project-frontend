@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>TxtAnimate | Research</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+    <style>
+        .main-body {        
+            font-weight: 600;
+            display: flex;
+            flex-direction: row;
+            justify-content: stretch;
+            align-content: stretch;
+        }
+
+        .main-body-div {
+            flex: 1;        
+            padding: 8px 16px;
+        }
+
+        img {
+            width: 100%;
+            object-fit: contain;            
+        }
+
+        table {
+            width: 100%;
+        }
+
+        tr {
+            text-align: center;
+            font-weight: normal;
+        }
+
+        .main-background {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-background">
+        <div class="gradient-container" id="gradient-container-1"></div>
+        <div class="gradient-container" id="gradient-container-2"></div>  
+
+        <header class="page-header">
+            <nav class="menu-header-link-section">
+                <a class="menu-header-link" href="/">Home</a>
+                <a class="menu-header-link" href="/examples">Examples</a>
+                <a class="menu-header-link" href="/research">Research</a>
+            </nav>
+            <p class="title">TxtAnimate</p>
+            <button id="cta-button" class="ripple">Start Generating</button>
+        </header>
+        
+        <div class="main-body">
+            <div class="main-body-div">
+                <p>Block diagram</p> 
+                <img src="/block-diagram.png">
+                <br>
+                <p>Performance metrics table</p>
+                <table border="1">
+                    <thead>
+                      <tr>
+                        <th>Sr. No.</th>
+                        <th>Relevance</th>
+                        <th>Quality</th>
+                        <th>Clarity</th>
+                        <th>Novelty</th>
+                        <th>Overall</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>6</td>
+                        <td>5</td>
+                        <td>6.5</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>10</td>
+                        <td>9</td>
+                        <td>9</td>
+                        <td>6</td>
+                        <td>8.5</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>6</td>
+                        <td>8</td>
+                        <td>7</td>
+                        <td>5</td>
+                        <td>6.5</td>
+                      </tr>
+                      <tr>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>8</td>
+                        <td>6</td>
+                        <td>5</td>
+                        <td>6</td>
+                      </tr>
+                      <tr>
+                        <td>5</td>
+                        <td>10</td>
+                        <td>9</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>9</td>
+                      </tr>
+                      <tr>
+                        <td>6</td>
+                        <td>10</td>
+                        <td>9</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>9</td>
+                      </tr>
+                      <tr>
+                        <td>7</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>6</td>
+                        <td>6</td>
+                        <td>6.75</td>
+                      </tr>
+                      <tr>
+                        <td>8</td>
+                        <td>10</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>7</td>
+                        <td>8</td>
+                      </tr>
+                      <tr>
+                        <td>9</td>
+                        <td>10</td>
+                        <td>8</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>8.25</td>
+                      </tr>
+                      <tr>
+                        <td>10</td>
+                        <td>10</td>
+                        <td>9</td>
+                        <td>9</td>
+                        <td>8</td>
+                        <td>9</td>
+                      </tr>
+                    </tbody>
+                  </table>                  
+            </div>
+            <div class="main-body-div">
+                <p>Performance of example prompt 1</p>
+                <img src="/performance-graph-1.png">
+                <p>Performance of example prompt 2</p>
+                <img src="/performance-graph-2.png">
+
+            </div>
+        </div>
+
+        <footer>© TxtAnimate Inc</footer>
+    </div>    
+    <script src="index.js"></script>
+</body>
+</html>
