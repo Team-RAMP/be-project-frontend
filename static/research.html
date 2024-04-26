@@ -16,9 +16,9 @@
             flex-direction: column;
             justify-content: stretch;
             align-content: stretch;
-            padding: 8px 20px;
+            padding: 8px 36px;
             overflow-y: scroll;
-
+            font-size: 24px;
         }
 
         .main-body::-webkit-scrollbar {
@@ -31,7 +31,7 @@
         }
 
         .flex-partition {
-            flex: 1;            
+            flex: 1; 
         }
 
         img {
@@ -41,6 +41,7 @@
 
         table {
             width: 100%;
+            font-size: 20px;
         }
 
         tr {
@@ -69,8 +70,13 @@
         </header>
         
         <div class="main-body">
-                <p>Block diagram</p> 
-                <img src="/block-diagram.png">
+                <p>Block diagram</p>
+
+                <center>
+                  <img src="/block-diagram.png" style="height: auto; width: 80vw;">
+                </center>
+
+                <br>                
                                 
                 <p style="margin-top: 24px;">Performance Visualization of the given two test prompts</p>
                 <div class="flex-div">
@@ -82,6 +88,8 @@
                         <img src="/performance-graph-2.png">
                     </div>
                 </div>
+
+                <br>
 
                 <p style="margin-top: 24px;">Performance metrics table for the above visualization</p>
                 <div class="flex-div">
